@@ -108,3 +108,10 @@
 - برای پاسخ به درخواست ورک‌فلوی آماده، فایل `gharbe_mashhad_sausage_img2img_sdxl.json` ساخته شد و همراه عکس `SDXL_00018_.png` و راهنمای فارسی در بستهٔ ZIP ارائه شد.
 - Workflow دارای ۹ نود استاندارد ComfyUI و ۱۳ لینک اعتبارسنجی‌شده در سطح JSON است؛ ورودی عکس باید در رابط کاربر دوباره انتخاب شود. DreamShaper XL، LoRA موجود، SDXL 1024×1024، steps=30، cfg=5.5، dpmpp_2m/karras، denoise=0.30 و seed=fixed در آن تنظیم شده‌اند.
 - این روش **Img2Img سراسری** است، نه کنترل موضعی یا reference adapter. خروجی ممکن است تغییرات محدود و ناخواسته داشته باشد. هنوز اجرای ComfyUI و کیفیت بصری خروجی تأیید نشده است؛ هیچ دانلود مدل تازه‌ای انجام نشده.
+
+## کتابخانه ورک‌فلوهای مادر SDXL نسخه ۲ — ۲۰۲۶-۱۰-۲۱
+- **فایل‌های ساخته‌شده و در مخزن ثبت‌شده:** [Text2Image](workflows/MASTER_Text2Image_SDXL_v2.json)، [Img2Img](workflows/MASTER_Img2Img_SDXL_v2.json) و [Inpaint](workflows/MASTER_Inpaint_SDXL_v2.json)؛ راهنما: [workflows/README.md](workflows/README.md).
+- هر سه Workflow دارای دو کادر مستقل `PrimitiveStringMultiline` برای Positive و Negative هستند که به هر دو ورودی متنی SDXL وصل می‌شوند. انتخاب Checkpoint، LoRA و پرامپت برای پروژه‌های بعدی قابل تغییر است.
+- نسخه جدید Inpaint با `VAEEncode` معمولی، `SetLatentNoiseMask` و `ImageCompositeMasked` برای حفظ بیرون ماسک طراحی شده؛ این روش تضمین موفقیت اصلاح را نمی‌دهد.
+- فایل‌های JSON از نظر سازگاری ساختار، link indexes و اتصال type‌ها بررسی شده‌اند، اما **روی ComfyUI کاربر هنوز اجرا نشده‌اند**. placeholder تصویر ورودی در I2I/Inpaint باید توسط کاربر انتخاب شود.
+- **NEXT STEP:** یکی از سه فایل را Drag & Drop کنیم، مطمئن شویم نودهای دو کادر پرامپت به درستی ظاهر شده‌اند و تست اولیه بگیریم. نتیجه اجرا و هر اصلاح بعدی باید در GitHub ثبت شود.
