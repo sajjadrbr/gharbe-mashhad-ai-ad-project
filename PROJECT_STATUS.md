@@ -19,7 +19,7 @@
 - **ریسک حقوقی باز:** اجازهٔ تجاری/اعتباردهی LoRA مورد استفاده برای پخش تبلیغ ویدیویی نیاز به بررسی جداگانه دارد؛ انجام نشده را تأیید شده ننویسید.
 
 ## NEXT STEP قطعی
-1. **گوجه تأیید شد**؛ رندرهای شکست‌خوردهٔ تکراری SDXL برای رفع کفش/ساق را ادامه ندهید. تصویر نهایی تولیدشده در گفتگو را در دارایی‌های محلی به عنوان `TOMATO_MASTER_CLEAN_V1.png` نگه دارید؛ وجود فایل روی سیستم کاربر هنوز تأیید نشده.
+1. **تست ویدئوی Wan اول انجام و بررسی شد**؛ حفظ فرم خوب، اجرای حرکت‌ها بسیار کم. NEXT STEP نخست تست یک پلک‌زدن واضح در یک کلیپ جدید با تنظیمات ثابت است؛ پس از تحلیل این آزمون سراغ خیارشور و شات B برویم. گوجهٔ تأییدشده را از رندرهای شکست‌خورده مجزا نگه داریم. تصویر نهایی تولیدشده در گفتگو را در دارایی‌های محلی به عنوان `TOMATO_MASTER_CLEAN_V1.png` نگه دارید؛ وجود فایل روی سیستم کاربر هنوز تأیید نشده.
 2. **طراحی کاراکتر خیارشور مکمل شات B**: شکل ساده و قابل‌شناسایی، متریال سه‌بعدی هماهنگ با سوسیس و گوجه، اندام کم و اتصال مستقیم؛ ابتدا concept را طراحی و از کاربر نظر بگیرید. انتخاب اینکه رندر نخست با ابزار تصویری گفتگو یا ComfyUI باشد با کاربر است؛ روش هیبریدی برای سرعت پیشنهاد شده ولی هنوز قفل نشده.
 3. بعد از تأیید دارایی‌ها، صفحه چیدمان آشپزخانه (گریل چپ/میز مواد راست/برگر وسط/تیم پشت) و کلیدفریم‌های صحنه؛ Wan 2.2 فقط بعد از frame composition. هنوز شات نهایی و ویدئو ساخته نشده است.
 4. ثبت هر milestone واقعی در GitHub؛ تصاویر چت به‌صورت خودکار به مخزن منتقل نمی‌شوند.
@@ -38,7 +38,14 @@
 - Prompt minimal locked-off studio shot: gentle glance, one blink, small hand wave only. Evaluate silhouette, face identity, feet and hand consistency and quality of motion.
 - **CURRENT NEXT STEP:** obtain first actual test clip and review its defects before any new model download/subscription or more complex animation. The pickle design is still planned after this small technical test.
 
-## FIRST TOMATO TEST — MASTER_T2I_00001_ — ۲۰۲۶-۱۰-۲۱
+## FIRST TOM
+## Wan actual first output: ComfyUI_00009_ (2026-10-21)
+- **Video generated and uploaded by user:** `ComfyUI_00009_.mp4` (H.264, 512×512, 49 frames, 16fps, 3.062s); analysed directly from the uploaded clip, not inferred from still images.
+- **Observed:** approved tomato silhouette, feet, expression and static framing preserved reasonably well; eye direction moves mostly upward. No obvious blink or meaningful hand wave; overall motion very weak. Quality of identity retention in a near-static clip looks acceptable, but animation direction-following is insufficient for the eventual comedic Shot B.
+- **Caveat:** Video alone does not establish ComfyUI workflow graph, sample settings or reproducibility. One simple 3-second test cannot quantify performance versus premium online models.
+- **NEXT STEP NOW:** do one controlled Wan rerun with **one explicit, unmistakable action only** (e.g. one clear blink), same clean tomato input, 512², 49 frames/16fps, and unchanged model/sampler/seed if known; if motion remains weak request screenshot of image-to-video pipeline to diagnose before more renders or downloads. Then compare a similar action with a higher-end online model only if justified.
+
+ATO TEST — MASTER_T2I_00001_ — ۲۰۲۶-۱۰-۲۱
 - **انجام‌شده:** خروجی `MASTER_T2I_00001_.png` از ورک‌فلوی `MASTER_Text2Image_SDXL_v2.json` ارائه شد؛ بنابراین **کارکرد عملی T2I V2 نیز از طرف کاربر تأیید می‌شود**. I2I و Inpaint V2 از قبل تست شده بودند.
 - تصویر نخست گوجه گرد، قرمز و سه‌بعدی با حالات چهره بازیگوش است؛ اما تاج سبز بزرگ، پنجه‌های گیاهی، اندام‌های کشیده/کفش و بینی نارنجی با شکل ساده و صیقلی سوسیس مرجع هماهنگ نیستند. **هنوز به‌عنوان دارایی گوجه نهایی پذیرفته نشده**.
 - **CURRENT NEXT STEP جایگزین قدم قبلی:** تنها یک Text2Image با پرامپت اصلاحی تاج کوتاه، دست‌وپای کوچک گرد، حذف بینی نارنجی و کفش، و پوزخند شیطنت‌آمیز؛ در صورت امکان seed/مدل/LoRA ثابت. تصویر را بررسی کنیم و از تکرار نامحدود تغییرات پرهیز کنیم. جزئیات در WORK_LOG.md.
