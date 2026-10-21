@@ -38,3 +38,9 @@ Single mischievous bright red ripe tomato mascot, premium original stylized 3D a
 ```text
 big tall leaves, spiky hair, jungle plant, plant monster, vine tentacles, green claw hands, sharp claws, long skinny legs, shoes, boots, orange nose, yellow nose, human nose, large beak, gaping oversized mouth, human body, animal body, extra limbs, duplicate hands, deformed fingers, multiple characters, apple, strawberry, pepper, glossy plastic toy, creepy face, messy background, product label, text, watermark, logo, duplicate eyes
 ```
+
+## Second result review: MASTER_T2I_00002_ (2026-10-21)
+- Second local render received after the revised positive/negative prompts. **Improved** compared to first: recognizable red round tomato, shorter green crown, red simplified hands, red nose, engaging 3D rendering.
+- **Not yet a final approved TOMATO_MASTER**: the model added red sneakers despite negative prompt, long thin green legs, oversized hands giving two thumbs-up, and a big friendly open smile instead of the specified sly asymmetrical smirk.
+- Candidate name for continued art direction: `TOMATO_CONCEPT_V2`, not a new finalized asset file or verified GitHub image.
+- Avoid uncontrolled global resampling. Proposed next action after user approval: keep as provisional reference; continue to pickle mascot. Revisit specific issues (footwear/leg proportions/action pose) during shot-B posing/compositing.
