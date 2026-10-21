@@ -22,3 +22,19 @@ multiple tomatoes, multiple characters, extra arms, extra legs, duplicated limbs
 
 ## Continuity notes
 After first approval, store actual image locally (suggested: `assets/characters/tomato/TOMATO_MASTER_V1.png`). Filename/approval not yet confirmed. Reference image of sausage should be visually compared side by side; SDXL prompt alone does not guarantee identical character style.
+
+## First result review: MASTER_T2I_00001_ (2026-10-21)
+- Actual ComfyUI image received. Good round tomato body, readable expression and cinematic 3D treatment. **Not approved final character** because foliage looks like tall hair, green claw hands/long vine legs and shoes, orange protruding nose and oversized smile mismatch the clean sausage design.
+- Do ONE controlled rerender with the same checkpoint/LoRA/size/seed (if available) and revised prompt below. Compare result; don't default to multi-region inpainting.
+
+### Revised positive prompt (v2)
+
+```text
+Single mischievous bright red ripe tomato mascot, premium original stylized 3D animated feature-film character. One plump, clearly round tomato body, smooth glossy red skin with gentle natural lobes, a tiny flat five-point green calyx directly on top, not tall leaves. Large expressive green eyes, slightly raised eyebrow, small cheeky asymmetric closed-mouth smirk, playful confident troublemaker attitude. Exactly two short thin flexible reddish-red arms, each ending in one rounded simplified cartoon hand, exactly two short reddish-red legs with small simple rounded feet matching the tomato body. No clothing or footwear. Clear uncluttered silhouette, playful ready-to-jump pose, tasteful sculpted forms, clean studio gray backdrop, soft warm cinematic studio light, subtle rim light, gentle floor shadow, same polished simple shape language and material quality as a premium 3D animated sausage mascot. One full-body character, centered composition.
+```
+
+### Revised negative prompt (v2)
+
+```text
+big tall leaves, spiky hair, jungle plant, plant monster, vine tentacles, green claw hands, sharp claws, long skinny legs, shoes, boots, orange nose, yellow nose, human nose, large beak, gaping oversized mouth, human body, animal body, extra limbs, duplicate hands, deformed fingers, multiple characters, apple, strawberry, pepper, glossy plastic toy, creepy face, messy background, product label, text, watermark, logo, duplicate eyes
+```
