@@ -30,13 +30,13 @@
 
 ## A-002 — Tomato mascot / گوجه بازیگوش
 
-**State:** NEXT TO DESIGN; no image approved.
+**State:** CLEAN VISUAL REFERENCE APPROVED (2026-10-21), not animation-ready. Historical first-draft bullets below.
 
 - Shot B lead: cheeky energetic tomato, leaps past pickle and onto springy lettuce.
 - Distinctly round red tomato silhouette, tiny green leaf crown; expressive eyes, clear limbs, movement-friendly pose.
 - Character on clean studio background, full body, separated from props.
 - Match the sausage's soft high-end stylized 3D shape language and light direction, not photoreal produce skin.
-- First deliverable: one `1024×1024` master portrait from [MASTER_Text2Image_SDXL_v2.json](workflows/MASTER_Text2Image_SDXL_v2.json). Then assess before producing alternatives.
+- Initial deliverable was explored via [MASTER_Text2Image_SDXL_v2.json](workflows/MASTER_Text2Image_SDXL_v2.json); final accepted design came from separate chat image generation, not SDXL. Need preserve actual approved image file.
 - Prompt/negative/acceptance checklist recorded in [NEXT_ASSET_TOMATO_BRIEF.md](NEXT_ASSET_TOMATO_BRIEF.md).
 
 ## A-003 — Pickle / خیارشور
@@ -77,3 +77,11 @@ Create clean set plate without living characters first; avoid repeated burgers.
 ### Tomato A-002: INPAINT_00006 and new concept (2026-10-21)
 - Local masked attempt `MASTER_INPAINT_00006_.png` failed to remove long vine legs/sneakers; introduced some edge artifacts.
 - New tomato concept with short directly attached feet created with a **separate image tool in chat**, not the user's ComfyUI. Awaiting approval. Not yet committed as binary asset, not a 3D rig.
+
+### A-002 FINAL DESIGN APPROVAL (2026-10-21)
+- After failed local `MASTER_INPAINT_00006_.png` (the unwanted green leg stems and sneakers persisted), an image generation tool in the chat produced a new **full-body red tomato mascot with the two feet directly attached beneath its spherical body, no leg stalks or shoes, expressive green eyes and compact red hands**.
+- **User said «آره عالیه»**. Treat the displayed **new tomato image** as **approved visual anchor** for Shot B and for designing the pickle counterpart.
+- The new image was **generated through a separate tool**, not reliably reconstructed from `MASTER_T2I_00002_.png` or local ComfyUI inpaint. Facial proportions/material may be different from those of the older images. No reproducible local seed/workflow for that exact frame is claimed.
+- Suggested local filename: `assets/characters/tomato/TOMATO_MASTER_CLEAN_V1.png`. **Physical save to user's workspace and binary upload to GitHub are not yet verified.**
+- The image is not a rig, a turnaround, a transparent cutout, or an animated shot. Additional poses and compositing need separate validation. The requested mischievous jumping/action pose for Shot B remains pending.
+- Next: design simple short-limbed pickle compatible with approved tomato and sausage, with user approval before locking.
