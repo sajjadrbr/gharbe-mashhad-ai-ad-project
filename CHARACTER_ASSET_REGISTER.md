@@ -73,3 +73,7 @@ Create clean set plate without living characters first; avoid repeated burgers.
 - `MASTER_T2I_00002_.png`: better clear spherical tomato, shorter crown, red rounded hands/nose, polished 3D look; still sneakers, long green legs, very large thumbs-up hands and over-friendly expression.
 - **State as of latest image:** `TOMATO_CONCEPT_V2`, provisional reference only; **not formally approved as character master**. User has not yet replied to this evaluation. Actual image binary not in repo.
 - Next after user confirmation: complementary pickle character or targeted pose/leg cleanup for Shot B.
+
+### Tomato A-002: INPAINT_00006 and new concept (2026-10-21)
+- Local masked attempt `MASTER_INPAINT_00006_.png` failed to remove long vine legs/sneakers; introduced some edge artifacts.
+- New tomato concept with short directly attached feet created with a **separate image tool in chat**, not the user's ComfyUI. Awaiting approval. Not yet committed as binary asset, not a 3D rig.
