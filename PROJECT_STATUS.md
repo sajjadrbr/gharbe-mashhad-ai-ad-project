@@ -1,7 +1,7 @@
 # وضعیت جاری پروژه «غرب مشهد»
 
 **آخرین به‌روزرسانی:** ۲۰۲۶-۱۰-۲۱ (به وقت تهران)  
-**مرحله فعلی:** طراحی Asset-first؛ **سوسیس و گوجه مرجع بصری تأییدشده‌اند**، خیارشور دارایی بعدی  
+**مرحله فعلی:** تست کوتاه Wan 2.2 5B روی مرجع بصری گوجه، پیش از طراحی خیارشور و انتخاب سرویس ویدیویی  
 **Source of truth:** این بخش «وضعیت جاری»؛ بخش‌های طولانی پایین‌تر وقایع تاریخی‌اند و NEXT STEPهای قدیمی را نباید دستور جاری دانست.
 
 ## وضعیت جاری / CURRENT SNAPSHOT — ۲۰۲۶-۱۰-۲۱
@@ -29,6 +29,14 @@
 - سپس با ابزار تولید تصویر همین گفت‌وگو، **تصویر جدیدی** با گوجه گرد قرمز، چشم‌های سبز، دست‌های کوتاه، کفش حذف‌شده و دو پای بسیار کوتاه متصل به بدنه تولید شد.
 - کاربر صریحاً گفت «آره عالیه». بنابراین **این تصویر طراحی تأییدشدهٔ گوجه A-002 است**، نه خروجی موضعی ComfyUI و نه شات متحرک/مدل 3D.
 - مدل تصویری گفتگو در پیروی از دستورهای تغییر هندسه در این آزمون بهتر از ترکیب محلی DreamShaperXL+3D Animation LoRA عمل کرد. **ComfyUI نرم‌افزار اجراست، نه مدل؛ ضعف فعلی به checkpoint/LoRA/conditioning مربوط می‌شود**. برای طراحی مرجع از تولید تصویر گفتگو، و برای انیمیشن و کنترل فنی از ComfyUI/Wan می‌توان به‌صورت مکمل استفاده کرد؛ استمرار هویت بصری بین ابزارها باید جدا آزمایش شود. فایل تصویر هنوز در مخزن بارگذاری نشده است.
+
+
+## First Wan 2.2 5B controlled motion test — PLANNED (2026-10-21)
+- User elected to test local Wan2.2 TI2V 5B before choosing any online video model.
+- **Not rendered yet**; this is only a planned next step. Input: approved clean tomato still from the conversation (needs saving locally), not the failed local inpaint version.
+- Existing `video_wan2_2_5B_ti2v` template, enable LoadImage and feed to `Wan22ImageToVideoLatent.start_image`. Starting size 512×512, length 49, playback 16 fps (~3 seconds), batch=1; leave existing sampler/model settings.
+- Prompt minimal locked-off studio shot: gentle glance, one blink, small hand wave only. Evaluate silhouette, face identity, feet and hand consistency and quality of motion.
+- **CURRENT NEXT STEP:** obtain first actual test clip and review its defects before any new model download/subscription or more complex animation. The pickle design is still planned after this small technical test.
 
 ## FIRST TOMATO TEST — MASTER_T2I_00001_ — ۲۰۲۶-۱۰-۲۱
 - **انجام‌شده:** خروجی `MASTER_T2I_00001_.png` از ورک‌فلوی `MASTER_Text2Image_SDXL_v2.json` ارائه شد؛ بنابراین **کارکرد عملی T2I V2 نیز از طرف کاربر تأیید می‌شود**. I2I و Inpaint V2 از قبل تست شده بودند.
