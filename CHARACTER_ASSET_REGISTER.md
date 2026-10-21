@@ -67,3 +67,9 @@ Create clean set plate without living characters first; avoid repeated burgers.
 5. Tiny Wan 2.2 tests per shot; assemble and add sound/branding.
 
 **Current bottleneck:** not more nose/torso cleanup; it is achieving character-to-environment style consistency and reliable shot composition.
+
+### A-002 progress 2026-10-21
+- `MASTER_T2I_00001_.png`: visually engaging but hair-like tall calyx, green claw hands/legs and orange nose; not approved.
+- `MASTER_T2I_00002_.png`: better clear spherical tomato, shorter crown, red rounded hands/nose, polished 3D look; still sneakers, long green legs, very large thumbs-up hands and over-friendly expression.
+- **State as of latest image:** `TOMATO_CONCEPT_V2`, provisional reference only; **not formally approved as character master**. User has not yet replied to this evaluation. Actual image binary not in repo.
+- Next after user confirmation: complementary pickle character or targeted pose/leg cleanup for Shot B.
