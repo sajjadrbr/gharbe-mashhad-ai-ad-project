@@ -74,3 +74,10 @@ sneakers, shoes, boots, footwear, socks, laces, clothing, gloves, long legs, ski
 ```
 - Workflow `MASTER_Text2Image_SDXL_v2.json`; 1024x1024 on latent AND both SDXL encoders, same DreamShaper XL and 3D animation LoRA 0.8/0.8, steps=30, CFG=5.5, dpmpp_2m/karras, denoise=1, fixed seed matching prior if available.
 - **Important:** T2I doesn't actually condition on `MASTER_T2I_00002_.png` (no reference image node), so output likeness is not guaranteed. **NEXT STEP:** one render, then compare; Inpaint only if prompt-only fails and user approves.
+
+## Decision: targeted inpainting after unsuccessful I2I (2026-10-21)
+- After the third T2I tomato generated unwanted human clothing/body, the user chose I2I on earlier tomato. User submitted `MASTER_I2I_00007_.png`: original tomato still had long green stalk legs, red sneakers and large thumbs-up hands despite image-to-image instructions.
+- User explicitly requested a **ready-to-use Inpaint prompt**, to replace both limbs with extremities attached **directly to the tomato body from ankle/wrist down**. No full legs, calves, thighs, forearms or upper arms.
+- **Plan:** use already committed `MASTER_Inpaint_SDXL_v2.json`, `Load Image=MASTER_I2I_00007_.png`; first mask all long green legs and shoes including a small overlapping area along underside of tomato and surrounding gray background; request exactly two tiny rounded bare RED feet physically attached directly beneath tomato (zero visible legs, no shoes). Keep face and arms unmasked. Suggested starting KSampler denoise 0.85, steps 30, CFG 5.5. Review **one** result.
+- If feet pass, use its resulting image as input for second, separate inpaint mask covering entire lengthy arms and existing hands including attachment to tomato sides; prompt exactly two small red hands attached directly at wrist level, no connecting long arms; same starting denoise 0.85.
+- This is an **unexecuted plan**, not proof that inpainting succeeded. Ensure each mask covers unwanted original components *and* the background that needs to replace them. Preserve original outside via ImageCompositeMasked already in V2 template; masks must have soft boundaries to avoid seams.
