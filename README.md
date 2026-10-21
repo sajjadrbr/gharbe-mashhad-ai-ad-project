@@ -1,0 +1,1 @@
+# gharbe-mashhad-ai-ad-project
