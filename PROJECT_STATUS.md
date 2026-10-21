@@ -149,3 +149,10 @@
 - گراف شامل `CheckpointLoaderSimple (DreamShaper XL Alpha2)`، `LoraLoader (3D Animation Style 0.8/0.8)`، `LoadImage`، `VAEEncode` معمولی، دو `CLIPTextEncodeSDXL`، `KSampler` با `denoise=0.30`، `VAEDecode` و `SaveImage` است؛ ۹ نود و ۱۳ اتصال بررسی ساختاری شدند. هیچ inpaint mask یا مدل جدیدی لازم ندارد.
 - **وضعیت:** ساخت فایل موفق، ولی بازشدن و اجرای واقعی آن در ComfyUI کاربر و مؤثر بودن Img2Img هنوز **تأیید نشده**. این روش نمی‌تواند حذف قطعی بینی یا آرتیفکت را تضمین کند.
 - **NEXT STEP:** کاربر JSON را وارد ComfyUI کند، تصویر SDXL_00018_.png را در Load Image آپلود کند و یک خروجی با denoise=0.30 بفرستد. پس از تأیید اجرای صحیح، workflow نهایی را به مخزن اضافه و نتیجه را در WORK_LOG.md ثبت کنیم.
+
+## کتابخانه ورک‌فلوهای مادر SDXL نسخه ۲ — ۲۰۲۶-۱۰-۲۱
+- **فایل‌های ساخته‌شده و در مخزن ثبت‌شده:** [Text2Image](workflows/MASTER_Text2Image_SDXL_v2.json)، [Img2Img](workflows/MASTER_Img2Img_SDXL_v2.json) و [Inpaint](workflows/MASTER_Inpaint_SDXL_v2.json)؛ راهنما: [workflows/README.md](workflows/README.md).
+- هر سه Workflow دارای دو کادر مستقل `PrimitiveStringMultiline` برای Positive و Negative هستند که به هر دو ورودی متنی SDXL وصل می‌شوند. انتخاب Checkpoint، LoRA و پرامپت برای پروژه‌های بعدی قابل تغییر است.
+- نسخه جدید Inpaint با `VAEEncode` معمولی، `SetLatentNoiseMask` و `ImageCompositeMasked` برای حفظ بیرون ماسک طراحی شده؛ این روش تضمین موفقیت اصلاح را نمی‌دهد.
+- فایل‌های JSON از نظر سازگاری ساختار، link indexes و اتصال type‌ها بررسی شده‌اند، اما **روی ComfyUI کاربر هنوز اجرا نشده‌اند**. placeholder تصویر ورودی در I2I/Inpaint باید توسط کاربر انتخاب شود.
+- **NEXT STEP:** یکی از سه فایل را Drag & Drop کنیم، مطمئن شویم نودهای دو کادر پرامپت به درستی ظاهر شده‌اند و تست اولیه بگیریم. نتیجه اجرا و هر اصلاح بعدی باید در GitHub ثبت شود.
