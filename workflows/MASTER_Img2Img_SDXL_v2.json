@@ -1,0 +1,695 @@
+{
+  "last_node_id": 11,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        40,
+        380
+      ],
+      "size": [
+        360,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            10,
+            16
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "DreamShaperXL1.0Alpha2_fixedVae_half_00001_.safetensors"
+      ],
+      "title": "01  SDXL Checkpoint"
+    },
+    {
+      "id": 2,
+      "type": "LoraLoader",
+      "pos": [
+        435,
+        380
+      ],
+      "size": [
+        360,
+        148
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            6
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "3D_Animation_Style-000009.safetensors",
+        0.8,
+        0.8
+      ],
+      "title": "02  Style LoRA (set strengths to 0 to disable)"
+    },
+    {
+      "id": 3,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        40,
+        -60
+      ],
+      "size": [
+        630,
+        270
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            4,
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "Create a polished stylized 3D animated-film version of the INPUT IMAGE. Keep the same main subject, silhouette, composition and recognizable features, while refining materials, shape clarity and cinematic lighting. DESIRED EDIT: [describe the change]. Keep elements not mentioned consistent with the source."
+      ],
+      "title": "POSITIVE PROMPT — WRITE HERE",
+      "color": "#213C2A",
+      "bgcolor": "#31543B"
+    },
+    {
+      "id": 4,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        40,
+        226
+      ],
+      "size": [
+        630,
+        170
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            7,
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "duplicate anatomy, extra limbs, distorted faces, malformed hands, repeated props, busy incoherent composition, artifacts, blurry patches, poor material continuity, text, letters, watermarks, logos, unwanted clutter"
+      ],
+      "title": "NEGATIVE PROMPT — WRITE HERE",
+      "color": "#3E2727",
+      "bgcolor": "#523434"
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        825,
+        -45
+      ],
+      "size": [
+        354,
+        235
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        0,
+        0,
+        1024,
+        1024,
+        "Create a polished stylized 3D animated-film version of the INPUT IMAGE. Keep the same main subject, silhouette, composition and recognizable features, while refining materials, shape clarity and cinematic lighting. DESIRED EDIT: [describe the change]. Keep elements not mentioned consistent with the source.",
+        "Create a polished stylized 3D animated-film version of the INPUT IMAGE. Keep the same main subject, silhouette, composition and recognizable features, while refining materials, shape clarity and cinematic lighting. DESIRED EDIT: [describe the change]. Keep elements not mentioned consistent with the source."
+      ],
+      "title": "SDXL Positive (automatically linked to green prompt)"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        825,
+        235
+      ],
+      "size": [
+        354,
+        235
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 7,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 8,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        0,
+        0,
+        1024,
+        1024,
+        "duplicate anatomy, extra limbs, distorted faces, malformed hands, repeated props, busy incoherent composition, artifacts, blurry patches, poor material continuity, text, letters, watermarks, logos, unwanted clutter",
+        "duplicate anatomy, extra limbs, distorted faces, malformed hands, repeated props, busy incoherent composition, artifacts, blurry patches, poor material continuity, text, letters, watermarks, logos, unwanted clutter"
+      ],
+      "title": "SDXL Negative (automatically linked to red prompt)"
+    },
+    {
+      "id": 7,
+      "type": "LoadImage",
+      "pos": [
+        825,
+        525
+      ],
+      "size": [
+        360,
+        360
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "UPLOAD_YOUR_IMAGE.png",
+        "image"
+      ],
+      "title": "INPUT IMAGE — Upload your own"
+    },
+    {
+      "id": 8,
+      "type": "VAEEncode",
+      "pos": [
+        1230,
+        550
+      ],
+      "size": [
+        200,
+        80
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": [],
+      "title": "VAE Encode — Img2Img input"
+    },
+    {
+      "id": 9,
+      "type": "KSampler",
+      "pos": [
+        1465,
+        160
+      ],
+      "size": [
+        330,
+        275
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 11
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        728349280,
+        "fixed",
+        30,
+        5.5,
+        "dpmpp_2m",
+        "karras",
+        0.35
+      ],
+      "title": "KSampler — adjust denoise / seed here"
+    },
+    {
+      "id": 10,
+      "type": "VAEDecode",
+      "pos": [
+        1850,
+        160
+      ],
+      "size": [
+        235,
+        80
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 15
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "title": "VAE Decode"
+    },
+    {
+      "id": 11,
+      "type": "SaveImage",
+      "pos": [
+        2110,
+        130
+      ],
+      "size": [
+        385,
+        390
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "MASTER_I2I"
+      ],
+      "title": "Final image output"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      1,
+      "CLIP"
+    ],
+    [
+      3,
+      2,
+      1,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      3,
+      0,
+      5,
+      1,
+      "STRING"
+    ],
+    [
+      5,
+      3,
+      0,
+      5,
+      2,
+      "STRING"
+    ],
+    [
+      6,
+      2,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      4,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      8,
+      4,
+      0,
+      6,
+      2,
+      "STRING"
+    ],
+    [
+      9,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      1,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      11,
+      2,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      12,
+      5,
+      0,
+      9,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      6,
+      0,
+      9,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      8,
+      0,
+      9,
+      3,
+      "LATENT"
+    ],
+    [
+      15,
+      9,
+      0,
+      10,
+      0,
+      "LATENT"
+    ],
+    [
+      16,
+      1,
+      2,
+      10,
+      1,
+      "VAE"
+    ],
+    [
+      17,
+      10,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7,
+      "offset": [
+        160,
+        85
+      ]
+    },
+    "info": "Reusable SDXL workflows; edit independent prompt text boxes and upload input images."
+  },
+  "version": 0.4
+}
