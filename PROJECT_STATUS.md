@@ -162,3 +162,9 @@
 - نسخه جدید Inpaint با `VAEEncode` معمولی، `SetLatentNoiseMask` و `ImageCompositeMasked` برای حفظ بیرون ماسک طراحی شده؛ این روش تضمین موفقیت اصلاح را نمی‌دهد.
 - فایل‌های JSON از نظر سازگاری ساختار، link indexes و اتصال type‌ها بررسی شده‌اند، و اکنون **Img2Img V2 و Inpaint V2 در ComfyUI کاربر اجرا و خروجی عملی ارائه شده است**؛ Text2Image V2 هنوز در این مرحله با تست مستقل گزارش نشده است. placeholder تصویر ورودی در I2I/Inpaint باید توسط کاربر انتخاب شود.
 - **توضیح وضعیت جدید:** در بخش بالای همین فایل نتیجهٔ آزمون‌های عملی جدید و NEXT STEP واقعی ثبت شده است؛ این گام قدیمی دیگر جاری نیست.
+
+
+## Update — Tomato Inpaint 00006 failed; external visual candidate (2026-10-21)
+- `MASTER_INPAINT_00006_.png`: long green stems and red sneakers remained, some ghosting at edges. **Not accepted**, no reason to repeat same method/denoise.
+- A separate image-edit/generation tool in chat produced a cleaner new tomato character depiction with very short feet, not via the reusable local SDXL workflows. **This is a candidate visual reference pending user review**, not a verified local inpainting fix, final asset, rig or in-repo PNG.
+- **Current next step:** obtain approval/rejection of new tomato candidate, then lock the style anchor and move to Shot B secondary ingredient (pickle). If strict pixel-level retention of existing character is required, prefer deliberate compositing/repositioning over blind latent inpainting.
