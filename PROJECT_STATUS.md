@@ -1,7 +1,7 @@
 # وضعیت جاری پروژه «غرب مشهد»
 
 **آخرین به‌روزرسانی:** ۲۰۲۶-۱۰-۲۲  
-**مرحله فعلی:** ارزیابی دو تست واقعی Wan 2.2 5B؛ نیاز به بررسی ورک‌فلوی واقعی پیش از رندر بعدی  
+**مرحله فعلی:** گراف و تنظیمات Wan 2.2 5B بررسی و تأیید ظاهری شدند؛ آزمون حرکت بدنی واضح پیش از تصمیم مدل آنلاین  
 **Source of truth:** این بخش «وضعیت جاری»؛ بخش‌های طولانی پایین‌تر وقایع تاریخی‌اند و NEXT STEPهای قدیمی را نباید دستور جاری دانست.
 
 ## وضعیت جاری / CURRENT SNAPSHOT — ۲۰۲۶-۱۰-۲۱
@@ -19,7 +19,7 @@
 - **ریسک حقوقی باز:** اجازهٔ تجاری/اعتباردهی LoRA مورد استفاده برای پخش تبلیغ ویدیویی نیاز به بررسی جداگانه دارد؛ انجام نشده را تأیید شده ننویسید.
 
 ## NEXT STEP قطعی
-1. **دو تست ویدئویی Wan بررسی شده‌اند:** `ComfyUI_00009_.mp4` (حرکت جزئی چشم) و `ComfyUI_00010_.mp4` (چشم نیمه‌بسته می‌شود اما کامل باز نمی‌گردد). **قبل از رندر سوم، اسکرین‌شات کل ورک‌فلوی Wan / image-to-video شامل start_image، مدل، sampler و FPS را بررسی کنیم.** فایل گوجهٔ تمیز را به‌عنوان مرجع محلی حفظ کنیم؛ ذخیره فیزیکی آن روی رایانه هنوز تأیید نشده است.
+1. **دو تست ویدئویی Wan و اسکرین‌شات گراف بررسی شدند:** مدل و مسیر I2V درست به‌نظر می‌رسند؛ مشکل پلک از اشتباه واضح سیم‌کشی نیست. یک آزمون تک‌حرکت بدنی واضح با مدل/تصویر و سایر پارامترهای ثابت برای سنجش حرکت پیشنهاد شده؛ پس از آن دربارهٔ مقایسهٔ آنلاین تصمیم بگیریم.
 2. **طراحی کاراکتر خیارشور مکمل شات B**: شکل ساده و قابل‌شناسایی، متریال سه‌بعدی هماهنگ با سوسیس و گوجه، اندام کم و اتصال مستقیم؛ ابتدا concept را طراحی و از کاربر نظر بگیرید. انتخاب اینکه رندر نخست با ابزار تصویری گفتگو یا ComfyUI باشد با کاربر است؛ روش هیبریدی برای سرعت پیشنهاد شده ولی هنوز قفل نشده.
 3. بعد از تأیید دارایی‌ها، صفحه چیدمان آشپزخانه (گریل چپ/میز مواد راست/برگر وسط/تیم پشت) و کلیدفریم‌های صحنه؛ Wan 2.2 فقط بعد از frame composition. هنوز شات نهایی و ویدئو ساخته نشده است.
 4. ثبت هر milestone واقعی در GitHub؛ تصاویر چت به‌صورت خودکار به مخزن منتقل نمی‌شوند.
@@ -195,3 +195,9 @@ ATO TEST — MASTER_T2I_00001_ — ۲۰۲۶-۱۰-۲۱
 - `MASTER_INPAINT_00006_.png`: long green stems and red sneakers remained, some ghosting at edges. **Not accepted**, no reason to repeat same method/denoise.
 - A separate image-edit/generation tool in chat produced a cleaner new tomato character depiction with very short feet, not via the reusable local SDXL workflows. **This is a candidate visual reference pending user review**, not a verified local inpainting fix, final asset, rig or in-repo PNG.
 - **Current next step:** obtain approval/rejection of new tomato candidate, then lock the style anchor and move to Shot B secondary ingredient (pickle). If strict pixel-level retention of existing character is required, prefer deliberate compositing/repositioning over blind latent inpainting.
+
+## Wan workflow screenshot validated — 2026-10-22
+- کاربر تصویری از گراف واقعی `video_wan2_2_5B_ti2v` فرستاد. ورودی I2V تصویر از `Load Image` به `Wan22ImageToVideoLatent.start_image` و latent به `KSampler` وصل است؛ مدل/CLIP/VAE هم به‌ظاهر صحیح‌اند.
+- **تنظیمات خوانده‌شده:** Wan2.2 TI2V 5B FP16 + UMT5 FP8 + Wan2.2 VAE، ModelSamplingSD3 shift8، KSampler steps20/CFG5/uni_pc/simple/denoise1/fixed seed، latent 512×512×49، video16fps. این مقادیر با روش متداول 5B سازگارند؛ اتصال اشتباه آشکاری دیده نشد.
+- **نتیجه:** شکست blink کامل در `ComfyUI_00010_.mp4` ظاهراً از تنظیم نادرست یا T2V تصادفی نیست؛ احتمال محدودیت زمان‌بندی حرکتِ مدل 5B در این ورودی وجود دارد. با دو تست ظریف چهره نباید کل ظرفیت حرکت مدل را قطعی رد کرد.
+- **NEXT STEP به‌روز:** برای قضاوت منصفانه در قابلیت حرکت، یک تست تک‌اکشن بدنی واضح در 3s با همین مدل و تصویر؛ در صورت لزوم مقایسهٔ همان عکس/پرامپت با مدل آنلاین. پیش از انجام هر تست جدید، هیچ تغییر تصادفی در نودها/دانلود سنگین توصیه نمی‌شود.
